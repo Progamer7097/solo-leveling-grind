@@ -1,0 +1,18 @@
+{
+  "name": "Solo Leveling Fitness System",
+  "short_name": "SoloLevelingFit",
+  "description": "Gamify your daily fitness workouts with high-intensity solo level-up mechanics, boss dungeons, and hunter titles.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://placehold.co",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
