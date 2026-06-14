@@ -1,8 +1,8 @@
-const CACHE_NAME = 'sololeveling-fitness-v5';
+const CACHE_NAME = 'sololeveling-fitness-v6';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  './',
+  './index.html',
+  './manifest.json',
   'https://cdn.tailwindcss.com',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
@@ -12,7 +12,7 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('System Caching Core Gameplay Assets...');
-      return cache.addAll(ASSETS);
+      return cache.addAll(ASSETS).catch(err => console.log('Asset caching error:', err));
     }).then(() => self.skipWaiting())
   );
 });
@@ -35,10 +35,13 @@ self.addEventListener('activate', (e) => {
 
 // Cache interceptor - Network First strategy fallback to Local Cache if offline
 self.addEventListener('fetch', (e) => {
+  // Only handle internal requests and secure external stylesheets
+  if (e.request.method !== 'GET') return;
+
   e.respondWith(
     fetch(e.request).then((response) => {
       // Dynamic network cache update
-      if (e.request.method === 'GET' && response.status === 200) {
+      if (response.status === 200) {
         const responseClone = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, responseClone);
