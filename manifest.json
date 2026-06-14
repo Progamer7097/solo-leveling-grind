@@ -2,7 +2,7 @@
   "name": "Solo Leveling Fitness System",
   "short_name": "SoloLevelingFit",
   "description": "Gamify your daily fitness workouts with high-intensity solo level-up mechanics, boss dungeons, and hunter titles.",
-  "start_url": "./index.html",
+  "start_url": "./solo_leveling_system.html",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#020617",
@@ -16,3 +16,4 @@
     }
   ]
 }
+
