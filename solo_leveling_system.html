@@ -105,6 +105,23 @@
             animation: pulse-cyan 2s infinite ease-in-out;
         }
     </style>
+    <!-- Link to your manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Meta tags for mobile theme color -->
+    <meta name="theme-color" content="#020617">
+
+    <!-- Script to register your Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service_worker.js')
+            .then(reg => console.log('Hunter System Active: Service Worker Registered!', reg))
+            .catch(err => console.error('Service Worker registration failed:', err));
+        });
+      }
+    </script>
+
 </head>
 <body class="text-slate-100 min-h-screen scanline relative overflow-x-hidden">
 
